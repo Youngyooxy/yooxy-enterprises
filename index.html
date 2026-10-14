@@ -99,7 +99,87 @@
     .nav-links {
   display: none;
     }
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--green);
+  font-size: 25px;
+  cursor: pointer;
+}
 
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(320px, 85vw);
+  height: 100vh;
+  padding: 28px 24px;
+  box-sizing: border-box;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-close {
+  display: block;
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: var(--text);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.side-menu-brand {
+  font-weight: 800;
+  margin: 20px 0 30px;
+}
+
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-links a {
+  padding: 15px 0;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.side-menu-links a:hover {
+  color: var(--green);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
     .nav-links a:hover {
       color: var(--green);
     }
