@@ -1056,6 +1056,39 @@ body.menu-open {
         ". No payment has been made. Payment processing will be enabled after secure gateway integration.";
     });
   </script>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const sideMenu = document.getElementById('sideMenu');
+const menuClose = document.getElementById('menuClose');
+const menuBackdrop = document.getElementById('menuBackdrop');
 
+function openMenu() {
+  sideMenu.classList.add('open');
+  menuBackdrop.classList.add('show');
+  document.body.classList.add('menu-open');
+  menuToggle.setAttribute('aria-expanded', 'true');
+  sideMenu.setAttribute('aria-hidden', 'false');
+}
+
+function closeMenu() {
+  sideMenu.classList.remove('open');
+  menuBackdrop.classList.remove('show');
+  document.body.classList.remove('menu-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  sideMenu.setAttribute('aria-hidden', 'true');
+}
+
+menuToggle.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuBackdrop.addEventListener('click', closeMenu);
+
+sideMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeMenu();
+});
+</script>
 </body>
   </html>
