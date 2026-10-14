@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07131d">
+  <meta name="description" content="Yooxy Enterprises offers convenient payment options for personal transactions and business services.">
+  <title>Yooxy Enterprises | Simple. Secure. Seamless.</title>
+
+  <style>
+    :root {
+      --bg: #07131d;
+      --panel: #101f2a;
+      --panel-light: #162b36;
+      --green: #b7f58b;
+      --teal: #43dfc0;
+      --text: #f4f8fa;
+      --muted: #a7b6c0;
+      --border: rgba(255,255,255,.11);
+      --dark-text: #10202a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7,19,29,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 19px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), var(--teal));
+      color: var(--dark-text);
+      border-radius: 12px;
+      font-size: 22px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 30px;
+      padding: 13px 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--dark-text);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .btn-dark {
+      background: var(--panel);
+      color: white;
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 95px 0 85px;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(67,223,192,.13), transparent 36%),
+        radial-gradient(ellipse at 10% 70%, rgba(183,245,139,.08), transparent 36%),
+        linear-gradient(135deg, #07131d, #102a37 65%, #0b1a25);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(183,245,139,.12);
+      border-radius: 50%;
+      right: -130px;
+      bottom: -220px;
+      box-shadow: 0 0 0 50px rgba(183,245,139,.025),
+                  0 0 0 100px rgba(183,245,139,.02);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5.5vw, 67px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .payment-preview {
+      padding: 28px;
+      background: rgba(7,19,29,.84);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 25px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+    }
+
+    .preview-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .preview-top h2 {
+      font-size: 21px;
+    }
+
+    .secure-label {
+      color: var(--green);
+      font-size: 11px;
+    }
+
+    .preview-sub {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 23px;
+    }
+
+    .preview-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 15px;
+      border-radius: 15px;
+      margin-top: 12px;
+      transition: border-color .2s;
+    }
+
+    .preview-option:hover {
+      border-color: var(--green);
+    }
+
+    .option-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 13px;
+      background: #203b43;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      flex-shrink: 0;
+    }
+
+    .preview-option h3 {
+      font-size: 14px;
+    }
+
+    .preview-option p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .arrow {
+      margin-left: auto;
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .trust-strip {
+      background: #0b1720;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 27px 0;
+      gap: 20px;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .trust-icon {
+      font-size: 25px;
+      color: var(--green);
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .trust-item small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    section.content-section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 610px;
+      margin-bottom: 36px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(29px, 4vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .section-heading h2 span {
+      color: var(--green);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #101f2a, #0b1923);
+      transition: transform .2s, border-color .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(183,245,139,.5);
+    }
+
+    .service-icon {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(183,245,139,.12);
+      border-radius: 15px;
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .payment-section {
+      background: #0a1822;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .method-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .method-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .method-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .method-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      background: #20323d;
+      border-radius: 9px;
+      font-size: 12px;
+    }
+
+    .payment-form-wrap {
+      max-width: 700px;
+      margin: auto;
+      background: #0f202b;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(22px, 5vw, 40px);
+    }
+
+    .payment-form-wrap h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .form-intro {
+      color: var(--muted);
+      margin-bottom: 26px;
+      font-size: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: #091721;
+      color: white;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--teal);
+    }
+
+    .field select option {
+      background: #091721;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 16px 0;
+    }
+
+    .notice {
+      display: none;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(183,245,139,.1);
+      border: 1px solid rgba(183,245,139,.3);
+      font-size: 13px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 50px 25px;
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at top right, rgba(67,223,192,.14), transparent 50%),
+        var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner strong {
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    @media (max-width: 850px) {
+      .nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 7px 0;
+        gap: 20px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .payment-preview {
+        max-width: 550px;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .logo {
+        font-size: 16px;
+      }
+
+      .nav > .btn {
+        padding: 10px 15px;
+        font-size: 12px;
+      }
+
+      h1 {
+        letter-spacing: -1.4px;
+      }
+
+      .services-grid,
+      .methods-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 12px;
+      }
+
+      .trust-item {
+        align-items: flex-start;
+      }
+
+      section.content-section {
+        padding: 60px 0;
+      }
+
+      .service-card {
+        padding: 23px;
+      }
+
+      .payment-form-wrap {
+        padding: 22px 17px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Yooxy Enterprises home">
+        <span class="logo-mark">Y</span>
+        <span style="color:white">Yooxy <span>Enterprises</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#payment">Make a Payment</a>
+        <a href="#methods">Crypto</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#payment">Get Started ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Fast · Flexible · Global</div>
+          <h1>Your Payments.<br>Your <span>Freedom.</span></h1>
+          <p class="hero-copy">
+            Send money, pay for services, or complete a purchase with
+            a convenient payment experience designed around your needs.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#payment">Make a Payment →</a>
+            <a class="btn btn-secondary" href="#services">Explore Services</a>
+          </div>
+        </div>
+
+        <div class="payment-preview">
+          <div class="preview-top">
+            <h2>Quick Payment</h2>
+            <span class="secure-label">● Simple checkout</span>
+          </div>
+          <p class="preview-sub">Choose how you want to pay.</p>
+
+          <a class="preview-option" href="#payment" data-payment="bank">
+            <div class="option-icon">🏦</div>
+            <div>
+              <h3>Bank Transfer</h3>
+              <p>Pay using an available bank transfer option</p>
+            </div>
+            <span class="arrow">›</span>
+          </a>
+
+          <a class="preview-option" href="#payment" data-payment="card">
+            <div class="option-icon">💳</div>
+            <div>
+              <h3>Card Payment</h3>
+              <p>Pay using a supported debit or credit card</p>
+            </div>
+            <span class="arrow">›</span>
+          </a>
+
+          <a class="preview-option" href="#payment" data-payment="crypto">
+            <div class="option-icon">₿</div>
+            <div>
+              <h3>Pay with Crypto</h3>
+              <p>Explore supported digital currencies</p>
+            </div>
+            <span class="arrow">›</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <span class="trust-icon">↗</span>
+          <div><strong>Convenient</strong><small>A straightforward payment process</small></div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">◇</span>
+          <div><strong>Payment Verification</strong><small>Transaction status checked through providers</small></div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">◎</span>
+          <div><strong>Flexible Payments</strong><small>Multiple methods where supported</small></div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✉</span>
+          <div><strong>Customer Support</strong><small>Help with payment questions</small></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What we offer</div>
+          <h2>One Destination.<br><span>More Ways to Pay.</span></h2>
+          <p>
+            Whether you're making a personal payment or paying for a
+            business service, Yooxy Enterprises makes the process simple.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">👤</div>
+            <h3>Personal Payments</h3>
+            <p>Make a personal payment with a clear reference and an available checkout method.</p>
+            <a class="btn btn-secondary" href="#payment">Make Payment →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▣</div>
+            <h3>Business Services</h3>
+            <p>Pay for an agreed service. Service prices and descriptions can be added as your business grows.</p>
+            <a class="btn btn-secondary" href="#payment">Pay for a Service →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">₿</div>
+            <h3>Crypto Payments</h3>
+            <p>Explore cryptocurrency payments through a compatible payment gateway.</p>
+            <a class="btn btn-secondary" href="#methods">Explore Crypto →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">＋</div>
+            <h3>Custom Payments</h3>
+            <p>Enter an agreed payment amount when a custom amount is appropriate.</p>
+            <a class="btn btn-secondary" href="#payment">Continue →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section payment-section" id="methods">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Payment options</div>
+          <h2>Pay Your <span>Way.</span></h2>
+          <p>
+            Our planned payment options include traditional methods and
+            cryptocurrency. Availability depends on the providers we connect.
+          </p>
+        </div>
+
+        <div class="methods-grid">
+          <article class="method-card">
+            <h3>Traditional Payments</h3>
+            <p>Payment options will be enabled after the payment provider is configured.</p>
+            <div class="method-tags">
+              <span class="tag">Bank Transfer</span>
+              <span class="tag">Debit Cards</span>
+              <span class="tag">Credit Cards</span>
+              <span class="tag">NGN</span>
+              <span class="tag">USD*</span>
+            </div>
+          </article>
+
+          <article class="method-card">
+            <h3>Cryptocurrency Payments</h3>
+            <p>Supported assets and networks will depend on our selected crypto gateway.</p>
+            <div class="method-tags">
+              <span class="tag">Bitcoin (BTC)</span>
+              <span class="tag">Ethereum (ETH)</span>
+              <span class="tag">USDT</span>
+              <span class="tag">USDC*</span>
+            </div>
+          </article>
+        </div>
+
+        <p class="form-note">
+          *Currency, asset, network and payment-method availability must be
+          confirmed with the relevant providers before launch.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" id="payment">
+      <div class="container">
+        <div class="payment-form-wrap">
+          <div class="eyebrow">Payment portal</div>
+          <h2>Make a Payment</h2>
+          <p class="form-intro">
+            Enter your details to prepare a payment request.
+          </p>
+
+          <form id="paymentForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="customerName">Full name</label>
+                <input id="customerName" name="customerName" autocomplete="name"
+                  placeholder="Your full name" required maxlength="100">
+              </div>
+
+              <div class="field">
+                <label for="customerEmail">Email address</label>
+                <input id="customerEmail" name="customerEmail" type="email"
+                  autocomplete="email" placeholder="you@example.com" required maxlength="254">
+              </div>
+
+              <div class="field">
+                <label for="paymentPurpose">Payment purpose</label>
+                <select id="paymentPurpose" name="paymentPurpose" required>
+                  <option value="">Select a purpose</option>
+                  <option value="Personal payment">Personal payment</option>
+                  <option value="Business service">Business service</option>
+                  <option value="Custom payment">Custom payment</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency" name="currency" required>
+                  <option value="NGN">NGN — Nigerian Naira</option>
+                  <option value="USD">USD — US Dollar</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="amount">Amount</label>
+                <input id="amount" name="amount" type="number"
+                  min="1" step="0.01" placeholder="Enter amount" required>
+              </div>
+
+              <div class="field">
+                <label for="paymentMethod">Payment method</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                  <option value="">Choose a method</option>
+                  <option value="bank">Bank transfer</option>
+                  <option value="card">Debit or credit card</option>
+                  <option value="crypto">Cryptocurrency</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="reference">Payment description (optional)</label>
+                <textarea id="reference" name="reference" rows="3"
+                  maxlength="300" placeholder="What is this payment for?"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%">
+              Continue to Payment →
+            </button>
+
+            <p class="form-note">
+              This form is a demonstration and does not collect or transfer
+              money yet. Do not enter sensitive financial information.
+            </p>
+
+            <div id="formNotice" class="notice" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="eyebrow">We're here to help</div>
+          <h2>Questions about a payment?</h2>
+          <p>
+            Contact details will be added here so customers know how to
+            reach Yooxy Enterprises for assistance.
+          </p>
+          <a class="btn btn-primary" href="#payment">Start a Payment →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>YOOXY ENTERPRISES</strong><br>
+        Simple. Secure. Seamless.
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#payment">Payments</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div>© <span id="year"></span> Yooxy Enterprises</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Selecting a payment option in the preview preselects it in the form.
+    document.querySelectorAll("[data-payment]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        document.getElementById("paymentMethod").value =
+          link.getAttribute("data-payment");
+      });
+    });
+
+    const paymentForm = document.getElementById("paymentForm");
+    const formNotice = document.getElementById("formNotice");
+
+    paymentForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!paymentForm.reportValidity()) {
+        return;
+      }
+
+      const amount = Number(document.getElementById("amount").value);
+      const currency = document.getElementById("currency").value;
+      const purpose = document.getElementById("paymentPurpose").value;
+      const method = document.getElementById("paymentMethod").value;
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        formNotice.style.display = "block";
+        formNotice.textContent = "Please enter a valid amount.";
+        return;
+      }
+
+      const methodNames = {
+        bank: "bank transfer",
+        card: "card payment",
+        crypto: "cryptocurrency"
+      };
+
+      formNotice.style.display = "block";
+      formNotice.textContent =
+        "Your form is ready. Amount: " +
+        new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: currency
+        }).format(amount) +
+        ". Purpose: " + purpose +
+        ". Selected method: " + methodNames[method] +
+        ". No payment has been made. Payment processing will be enabled after secure gateway integration.";
+    });
+  </script>
+
+</body>
+  </html>
