@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Payment | Yooxy Enterprises</title>
+<style>
+:root {
+  --bg: #07131d;
+  --panel: #101f2a;
+  --panel-light: #162b36;
+  --green: #b7f58b;
+  --teal: #43dfc0;
+  --text: #f3f8fa;
+  --muted: #a8bac4;
+  --border: rgba(255,255,255,.1);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 6%;
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-size: 19px; font-weight: 800; letter-spacing: 1px; }
+.mark { color: var(--green); margin-right: 8px; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; }
+nav a { color: var(--muted); font-size: 14px; }
+nav a.active, nav a:hover { color: var(--green); }
+main { max-width: 1000px; margin: auto; padding: 55px 6%; }
+.eyebrow {
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+}
+h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.1; margin: 14px 0; }
+.intro { max-width: 620px; color: var(--muted); }
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 22px;
+  margin-top: 35px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px;
+}
+.method {
+  padding: 15px;
+  background: var(--panel-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 12px;
+}
+.method strong { display: block; }
+.method span { color: var(--muted); font-size: 13px; }
+label { display: block; margin: 15px 0 6px; font-size: 13px; }
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #091923;
+  color: var(--text);
+  font: inherit;
+}
+textarea { resize: vertical; min-height: 85px; }
+button, .button {
+  display: inline-block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--green);
+  color: #07131d;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+.note {
+  margin-top: 16px;
+  padding: 13px;
+  border-radius: 9px;
+  background: #0b222b;
+  color: var(--muted);
+  font-size: 13px;
+}
+#message { margin-top: 15px; font-size: 14px; color: var(--teal); }
+footer {
+  padding: 25px 6%;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+@media(max-width: 720px) {
+  header { align-items: flex-start; flex-direction: column; }
+  nav { gap: 12px; }
+  .layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html"><span class="mark">✦</span>YOOXY ENTERPRISES</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a class="active" href="payment.html">Make a Payment</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header><main>
+  <span class="eyebrow">Secure payment experience</span>
+  <h1>Make a payment.</h1>
+  <p class="intro">Enter your details and choose your preferred payment method. Payment processing will be enabled once our secure payment providers are connected.</p>  <div class="layout">
+    <section class="card">
+      <span class="eyebrow">Payment options</span>
+      <h2>Choose how to pay</h2>
+      <div class="method">
+        <strong>🏦 Bank Transfer</strong>
+        <span>For supported local payments.</span>
+      </div>
+      <div class="method">
+        <strong>💳 Debit or Credit Card</strong>
+        <span>For cards supported by our payment provider.</span>
+      </div>
+      <div class="method">
+        <strong>₿ Cryptocurrency</strong>
+        <span>Crypto payments will use a supported payment gateway.</span>
+      </div>
+      <div class="note">Never share your card PIN, password, or one-time password with anyone. Payments should be completed through an authorized provider.</div>
+    </section><section class="card">
+  <span class="eyebrow">Payment details</span>
+  <h2>Your information</h2>
+  <form id="paymentForm">
+    <label for="name">Full name</label>
+    <input id="name" name="name" autocomplete="name" required>
+
+    <label for="email">Email address</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+
+    <label for="purpose">Payment purpose</label>
+    <select id="purpose" name="purpose" required>
+      <option value="">Select an option</option>
+      <option>Business service</option>
+      <option>Personal payment</option>
+      <option>Other</option>
+    </select>
+
+    <label for="currency">Currency</label>
+    <select id="currency" name="currency" required>
+      <option value="NGN">NGN — Nigerian Naira</option>
+      <option value="USD">USD — US Dollar</option>
+    </select>
+
+    <label for="amount">Amount</label>
+    <input id="amount" name="amount" type="number" min="1" step="0.01" placeholder="Enter amount" required>
+
+    <label for="method">Preferred payment method</label>
+    <select id="method" name="method" required>
+      <option value="">Choose a method</option>
+      <option value="bank">Bank transfer</option>
+      <option value="card">Debit or credit card</option>
+      <option value="crypto">Cryptocurrency</option>
+    </select>
+
+    <label for="description">Payment description (optional)</label>
+    <textarea id="description" name="description" placeholder="What is this payment for?"></textarea>
+
+    <button type="submit">Continue to Payment</button>
+    <div id="message" role="status" aria-live="polite"></div>
+  </form>
+  <div class="note">This form is currently a demonstration. It does not collect money or confirm a payment.</div>
+</section>
+
+  </div>
+</main><footer>© 2026 Yooxy Enterprises. All rights reserved.</footer><script>
+document.getElementById("paymentForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("message").textContent =
+    "Your form is working, but real payments are not connected yet. No money has been collected. Please check back after payment processing is enabled.";
+});
+</script></body>
+      </html>
